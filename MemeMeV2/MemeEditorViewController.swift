@@ -83,6 +83,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.ImagePickView.image = image
             self.shareButton.isEnabled = true
+            setDefaultTextField(self.topTextField, initText: "TOP")
+            setDefaultTextField(self.bottomTextField, initText: "BOTTOM")
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -171,14 +173,21 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                 self.save(memedImage: image)
             }
             
-            self.dismiss(animated: true, completion: nil)
-            
+            //self.dismiss(animated: true, completion: nil)
+            if let navigationVC = self.navigationController {
+                navigationVC.popToRootViewController(animated: true)
+            }
         }
     }
     
     // save memedImage
     func save(memedImage: UIImage) {
-        _ = Meme(topText: self.topTextField.text!, bottomText: self.bottomTextField.text!, originImage: self.ImagePickView.image!, memedImage: memedImage)
+        let meme = Meme(topText: self.topTextField.text!, bottomText: self.bottomTextField.text!, originImage: self.ImagePickView.image!, memedImage: memedImage)
+        
+        // Add to memes array in the AppDelegate for sharing between table view & collection view
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
+        
     }
     
     
