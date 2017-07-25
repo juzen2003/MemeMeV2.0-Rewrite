@@ -35,6 +35,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // diabled camera button if no camera available
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         self.subscribeToKeyboardNotification()
+        
+        tabBarController?.tabBar.isHidden = true
     }
     
     
