@@ -15,10 +15,12 @@ class SentMemesCollectionViewController: UICollectionViewController {
         return appDelegate.memes
     }
 
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //modified flowLayout based on main view size
+        getFlowLayoutModified(view.frame.size)
     }
     
     
@@ -29,6 +31,30 @@ class SentMemesCollectionViewController: UICollectionViewController {
         collectionView!.reloadData()
     }
 
+    
+    // respond to the rotation of view
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        getFlowLayoutModified(size)
+    }
+    
+    // get flowLayout modified when device is rotated
+    func getFlowLayoutModified(_ size: CGSize) {
+        let space: CGFloat = 3
+        var dimension: CGFloat
+        
+        if size.width < size.height {
+            // portrait
+            dimension = (size.width - (2 * space)) / 3.0
+        } else {
+            // landscape
+            dimension = (size.width - (4 * space)) / 5.0
+        }
+        
+        flowLayout.minimumLineSpacing = space
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+    }
+    
     
     // how many items in collection view
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -42,7 +68,8 @@ class SentMemesCollectionViewController: UICollectionViewController {
         let meme = self.memes[(indexPath as NSIndexPath).row]
         cell.collectionViewCellImageView?.image = meme.memedImage!
         
-        cell.collectionViewCellImageView?.contentMode = .scaleAspectFill
+        cell.collectionViewCellImageView?.contentMode = .scaleAspectFit
+        cell.backgroundColor = UIColor.darkGray
     
         return cell
     }

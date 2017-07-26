@@ -38,7 +38,7 @@ class SentMemesTableViewController: UITableViewController {
         cell.imageView?.image = meme.memedImage!
         cell.textLabel?.text = meme.topText! + "..." + meme.bottomText!
 
-        cell.imageView?.contentMode = .scaleAspectFill
+        cell.imageView?.contentMode = .scaleAspectFit
         cell.textLabel?.contentMode = .scaleAspectFill
         
         return cell

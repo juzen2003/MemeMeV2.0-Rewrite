@@ -181,7 +181,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CYM-O3-haH">
-                            <size key="itemSize" width="100" height="100"/>
+                            <size key="itemSize" width="120" height="120"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -195,15 +195,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zk2-kb-02J">
-                                            <rect key="frame" x="8" y="8" width="104" height="104"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="zk2-kb-02J" firstAttribute="leading" secondItem="IoE-Cc-0v0" secondAttribute="leadingMargin" id="4U0-e9-J45"/>
-                                    <constraint firstItem="zk2-kb-02J" firstAttribute="top" secondItem="IoE-Cc-0v0" secondAttribute="topMargin" id="Dpb-lI-pWt"/>
-                                    <constraint firstItem="zk2-kb-02J" firstAttribute="centerX" secondItem="IoE-Cc-0v0" secondAttribute="centerX" id="fxJ-t4-hLd"/>
-                                    <constraint firstItem="zk2-kb-02J" firstAttribute="centerY" secondItem="IoE-Cc-0v0" secondAttribute="centerY" id="vra-xc-n4f"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="zk2-kb-02J" secondAttribute="bottom" constant="-8" id="JdB-Zp-twm"/>
+                                    <constraint firstItem="zk2-kb-02J" firstAttribute="top" secondItem="IoE-Cc-0v0" secondAttribute="topMargin" constant="-8" id="LPA-Jo-j06"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="zk2-kb-02J" secondAttribute="trailing" constant="-8" id="Szh-2n-47k"/>
+                                    <constraint firstItem="zk2-kb-02J" firstAttribute="leading" secondItem="IoE-Cc-0v0" secondAttribute="leadingMargin" constant="-8" id="W4V-P3-ukX"/>
                                 </constraints>
                                 <size key="customSize" width="120" height="120"/>
                                 <connections>
@@ -223,6 +223,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="flowLayout" destination="CYM-O3-haH" id="h6G-bs-gCe"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y94-M6-c8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
