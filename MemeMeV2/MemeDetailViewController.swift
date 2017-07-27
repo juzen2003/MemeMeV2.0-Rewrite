@@ -23,4 +23,15 @@ class MemeDetailViewController: UIViewController {
         self.navigationItem.title = "MemedImage"
     }
     
+    @IBAction func editButton(_ sender: Any) {
+        let controller: MemeEditorViewController
+        controller = storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
+        
+        controller.memeToBeEdited = self.meme
+        
+        if let navigationVC = self.navigationController {
+            navigationVC.pushViewController(controller, animated: true)
+        }
+        
+    }
 }

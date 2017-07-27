@@ -16,27 +16,33 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var toolBar: UIToolbar!
+    
     @IBOutlet weak var shareButton: UIButton!
     
     
     let imagePickerView = UIImagePickerController()
     let textFieldDelegate = TextFieldDelegate()
-    
+    var memeToBeEdited: Meme? 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.tabBar.isHidden = true
         self.imagePickerView.delegate = self
-        self.initViewSetup()
+        
+        if (self.memeToBeEdited == nil) {
+            self.initViewSetup("TOP", bottomString: "BOTTOM", enableShare: false, image: nil)
+        } else {
+            self.initViewSetup(self.memeToBeEdited!.topText!, bottomString: self.memeToBeEdited!.bottomText!, enableShare: true, image: self.memeToBeEdited!.originImage!)
+        }
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        self.toolBar.isHidden = false
         // diabled camera button if no camera available
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         self.subscribeToKeyboardNotification()
-        
-        tabBarController?.tabBar.isHidden = true
     }
     
     
@@ -65,11 +71,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     
     // init view
-    func initViewSetup() {
-        setDefaultTextField(self.topTextField, initText: "TOP")
-        setDefaultTextField(self.bottomTextField, initText: "BOTTOM")
-        self.shareButton.isEnabled = false
-        self.ImagePickView.image = nil
+    func initViewSetup(_ topString: String, bottomString: String, enableShare: Bool, image: UIImage?) {
+        setDefaultTextField(self.topTextField, initText: topString)
+        setDefaultTextField(self.bottomTextField, initText: bottomString)
+        self.shareButton.isEnabled = enableShare
+        self.ImagePickView.image = image
     }
     
     
@@ -195,8 +201,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func generateMemedImage() -> UIImage {
         // Hide tool & nav bar
-        self.toolBar.isHidden = true
         navigationController?.isNavigationBarHidden = true
+        self.toolBar.isHidden = true
+        
         
         // render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -205,8 +212,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         UIGraphicsEndImageContext()
         
         // put back tool & nav bar
-        self.toolBar.isHidden = false
         navigationController?.isNavigationBarHidden = false
+        self.toolBar.isHidden = false
+        
         
         return memedImage
     }
@@ -214,9 +222,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     // return to original view
     @IBAction func cancel(_ sender: Any) {
-        self.initViewSetup()
+        if self.memeToBeEdited == nil {
+            if let navigationVC = self.navigationController {
+                navigationVC.popToRootViewController(animated: true)
+            }
+        } else {
+            self.navigationController!.popViewController(animated: true)
+        }
+        
     }
-    
 }
 
 

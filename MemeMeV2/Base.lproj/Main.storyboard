@@ -13,7 +13,7 @@
         <!--Meme Editor-->
         <scene sceneID="1Z3-Al-aw6">
             <objects>
-                <viewController id="pKV-Pt-seg" customClass="MemeEditorViewController" customModule="MemeMeV2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditorViewController" id="pKV-Pt-seg" customClass="MemeEditorViewController" customModule="MemeMeV2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Csf-4u-Zek"/>
                         <viewControllerLayoutGuide type="bottom" id="cyV-po-pl7"/>
@@ -23,25 +23,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rcz-o5-O9B">
-                                <rect key="frame" x="0.0" y="94" width="375" height="499"/>
+                                <rect key="frame" x="0.0" y="94" width="375" height="450"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SW3-Q7-ZQA">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem title="Pick" id="Pfs-63-F4s">
-                                        <connections>
-                                            <action selector="pickAnImageFromAlbum:" destination="pKV-Pt-seg" id="dRu-Hz-6ik"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Camera" id="2wD-Gl-04a">
-                                        <connections>
-                                            <action selector="pickAnImageFromCamera:" destination="pKV-Pt-seg" id="2wh-w0-w59"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W3n-0p-07Z">
-                                <rect key="frame" x="0.0" y="563" width="375" height="30"/>
+                                <rect key="frame" x="0.0" y="514" width="375" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -52,6 +37,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SW3-Q7-ZQA">
+                                <rect key="frame" x="0.0" y="574" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="IsS-jS-U9t"/>
+                                    <barButtonItem title="Pick" id="Pfs-63-F4s">
+                                        <connections>
+                                            <action selector="pickAnImageFromAlbum:" destination="pKV-Pt-seg" id="dRu-Hz-6ik"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="bVW-I5-HMB"/>
+                                    <barButtonItem title="Camera" id="2wD-Gl-04a">
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="pKV-Pt-seg" id="2wh-w0-w59"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="GZO-X3-oM0"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -97,7 +100,7 @@
                         <outlet property="bottomTextField" destination="W3n-0p-07Z" id="IJJ-6W-VF6"/>
                         <outlet property="cameraButton" destination="2wD-Gl-04a" id="qT7-xk-SGe"/>
                         <outlet property="shareButton" destination="ZyV-LT-e8m" id="oI4-ti-vN5"/>
-                        <outlet property="toolBar" destination="SW3-Q7-ZQA" id="bCq-e1-mgC"/>
+                        <outlet property="toolBar" destination="SW3-Q7-ZQA" id="hKv-cy-Azw"/>
                         <outlet property="topTextField" destination="W5Q-QT-NLF" id="l68-fD-ofA"/>
                     </connections>
                 </viewController>
@@ -120,6 +123,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E33-Cg-V0h">
                                 <rect key="frame" x="0.0" y="60" width="375" height="567"/>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a7D-nu-7DJ">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="NZE-S0-Yud"/>
+                                    <barButtonItem title="Edit" id="TUy-wE-2Tu">
+                                        <connections>
+                                            <action selector="editButton:" destination="kmh-tU-D73" id="a9Y-Ow-LUr"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="1dz-Th-qE2"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -287,6 +303,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sta-sR-MT2"/>
+        <segue reference="fDg-70-rmO"/>
     </inferredMetricsTieBreakers>
 </document>
