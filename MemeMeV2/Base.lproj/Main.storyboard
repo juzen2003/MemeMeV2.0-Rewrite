@@ -47,7 +47,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bVW-I5-HMB"/>
-                                    <barButtonItem title="Camera" id="2wD-Gl-04a">
+                                    <barButtonItem systemItem="camera" id="2wD-Gl-04a">
                                         <connections>
                                             <action selector="pickAnImageFromCamera:" destination="pKV-Pt-seg" id="2wh-w0-w59"/>
                                         </connections>
@@ -128,9 +128,10 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="NZE-S0-Yud"/>
-                                    <barButtonItem title="Edit" id="TUy-wE-2Tu">
+                                    <barButtonItem systemItem="edit" id="TUy-wE-2Tu">
                                         <connections>
                                             <action selector="editButton:" destination="kmh-tU-D73" id="a9Y-Ow-LUr"/>
+                                            <segue destination="pKV-Pt-seg" kind="show" identifier="editMeme" id="lv2-I4-jpP"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1dz-Th-qE2"/>
@@ -177,7 +178,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Sent Memes" id="K2o-G1-M90">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="onv-Mg-ARp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="onv-Mg-ARp">
                             <connections>
                                 <segue destination="pKV-Pt-seg" kind="show" id="fDg-70-rmO"/>
                             </connections>
@@ -233,7 +234,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Sent Memes" id="L8i-1r-wyz">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="atn-Vq-fDk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="atn-Vq-fDk">
                             <connections>
                                 <segue destination="pKV-Pt-seg" kind="show" id="sta-sR-MT2"/>
                             </connections>
@@ -251,7 +252,7 @@
         <scene sceneID="SUu-bl-eT8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PtJ-XQ-Wef" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Table" id="6Wd-z2-ank"/>
+                    <tabBarItem key="tabBarItem" title="Table" image="Table" id="6Wd-z2-ank"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gts-pk-V9u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -288,7 +289,7 @@
         <scene sceneID="Zu8-ca-brH">
             <objects>
                 <navigationController id="fOB-Fm-rAs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Collection" id="qhS-mE-bv3"/>
+                    <tabBarItem key="tabBarItem" title="Collection" image="Collection" id="qhS-mE-bv3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ikm-W4-lSK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -302,7 +303,11 @@
             <point key="canvasLocation" x="-554" y="1493"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Collection" width="30" height="30"/>
+        <image name="Table" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fDg-70-rmO"/>
+        <segue reference="lv2-I4-jpP"/>
     </inferredMetricsTieBreakers>
 </document>

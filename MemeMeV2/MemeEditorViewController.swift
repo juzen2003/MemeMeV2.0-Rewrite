@@ -33,13 +33,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             self.initViewSetup("TOP", bottomString: "BOTTOM", enableShare: false, image: nil)
         } else {
             self.initViewSetup(self.memeToBeEdited!.topText!, bottomString: self.memeToBeEdited!.bottomText!, enableShare: true, image: self.memeToBeEdited!.originImage!)
+            self.toolBar.isHidden = true
         }
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.toolBar.isHidden = false
         // diabled camera button if no camera available
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         self.subscribeToKeyboardNotification()
@@ -90,6 +90,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.ImagePickView.image = image
+            self.ImagePickView.contentMode = .scaleAspectFit
             self.shareButton.isEnabled = true
             setDefaultTextField(self.topTextField, initText: "TOP")
             setDefaultTextField(self.bottomTextField, initText: "BOTTOM")

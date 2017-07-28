@@ -18,11 +18,13 @@ class MemeDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         memeDetailImageView.image = self.meme.memedImage
+        //memeDetailImageView.image = self.meme.originImage
         memeDetailImageView.contentMode = .scaleAspectFill
         tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = "MemedImage"
     }
     
+    /*
     @IBAction func editButton(_ sender: Any) {
         let controller: MemeEditorViewController
         controller = storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
@@ -34,4 +36,13 @@ class MemeDetailViewController: UIViewController {
         }
         
     }
+     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination as! MemeEditorViewController
+        if segue.identifier == "editMeme" {
+            controller.memeToBeEdited = self.meme
+        }
+    }
+    
 }
